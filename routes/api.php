@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/send', [TestController::class, 'send'])->name('test.send');
+Route::get('/state', [TestController::class, 'state'])->name('state');
