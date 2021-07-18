@@ -42,16 +42,14 @@
             e.preventDefault();
             $.ajax({
                 type: "get",
-                url: "/send",
+                url: "/store",
                 data: {
                     state: $(this).val(), // < note use of 'this' here
-                    // access_token: $("#access_token").val()
                 },
                 success: function(result) {
-                    // alert('ok');
                 },
                 error: function(result) {
-                    // alert('error');
+                    alert('error');
                 }
             });
         });
@@ -60,16 +58,14 @@
             e.preventDefault();
             $.ajax({
                 type: "get",
-                url: "/send",
+                url: "/store",
                 data: {
                     state: $(this).val(), // < note use of 'this' here
-                    // access_token: $("#access_token").val()
                 },
                 success: function(result) {
-                    // alert('ok');
                 },
                 error: function(result) {
-                    // alert('error');
+                    alert('error');
                 }
             });
         });
