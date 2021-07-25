@@ -7,22 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
-    public function send(Request $request)
+    public function state()
     {
-//        dd($request->all());
-//        if ($request->state === '1') {
-//            $data = $request->state;
-//            return $data;
-//        } else {
-//            $data = $request->state;
-//            return $data;
-//        }
+        $data = DB::table('data')
+            ->select('state')
+            ->latest('state')
+            ->first();
+        // $data = response()->json($data);
+        // return $data;
+        return $data->state;
+    }
 
-                $data = DB::table('data')
-                ->select('state')->latest('state')->first();
-                $data2= response()->json($data);
-                $data2 = json_decode($data2, TRUE);
-                return $data2;
 
+    public function store(Request $request)
+    {
+        DB::table('data')
+            ->where('id', 1)
+            ->update(['state' => $request->state]);
+    
+        // return $request->state;
     }
 }
