@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/send', [TestController::class, 'send'])->name('test.send');
+Route::get('/store', [TestController::class, 'store'])->name('store');

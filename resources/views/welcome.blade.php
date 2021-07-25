@@ -24,8 +24,8 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4">
-            <button class="btn btn-success" id="on" value="0">On</button>
-            <button class="btn btn-danger" id="off" value="1">Off</button>
+            <button class="btn btn-success" id="on" value="1">On</button>
+            <button class="btn btn-danger" id="off" value="0">Off</button>
         </div>
     </div>
 </div>
@@ -42,16 +42,14 @@
             e.preventDefault();
             $.ajax({
                 type: "get",
-                url: "/send",
+                url: "/store",
                 data: {
                     state: $(this).val(), // < note use of 'this' here
-                    // access_token: $("#access_token").val()
                 },
                 success: function(result) {
-                    // alert('ok');
                 },
                 error: function(result) {
-                    // alert('error');
+                    alert('error');
                 }
             });
         });
@@ -60,16 +58,14 @@
             e.preventDefault();
             $.ajax({
                 type: "get",
-                url: "/send",
+                url: "/store",
                 data: {
                     state: $(this).val(), // < note use of 'this' here
-                    // access_token: $("#access_token").val()
                 },
                 success: function(result) {
-                    // alert('ok');
                 },
                 error: function(result) {
-                    // alert('error');
+                    alert('error');
                 }
             });
         });
