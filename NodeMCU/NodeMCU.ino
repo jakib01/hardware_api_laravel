@@ -3,11 +3,13 @@
 #include<ESP8266HTTPClient.h>  //library for handling client-side http requests
 #include <WiFiClient.h>
 
-const byte wifiLED = D0;
 const byte redLED = D4;
 const byte greenLED = D8;
+const byte bazzer = D6;
+
 const byte wifiConnetct = D2;
 const byte error = D1;
+const byte wifiLED = D0;
 
 // objects
 WiFiClient wifi;
@@ -22,14 +24,17 @@ void setup()
 
 
   // pins initialization
-  pinMode(wifiLED, OUTPUT);
   pinMode(redLED, OUTPUT);
   pinMode(greenLED, OUTPUT);
+  pinMode(bazzer, OUTPUT);
+  
+  pinMode(wifiLED, OUTPUT);
   pinMode(wifiConnetct, OUTPUT);
   pinMode(error, OUTPUT);
   
   digitalWrite(redLED, LOW);
   digitalWrite(greenLED, LOW);
+  digitalWrite(bazzer, LOW);
   
   WiFi.begin(ssid, password);  //initializing connection to the Wi-Fi router
   WiFi.hostname("Akibs-NodeMCU");  //declaring hostname for DHCP on the Wi-Fi router
@@ -74,6 +79,7 @@ void loop()
 
       if (state == "0") {
       digitalWrite(redLED, HIGH);
+      digitalWrite(bazzer, HIGH);
       digitalWrite(greenLED, LOW);
       digitalWrite(wifiConnetct, HIGH);
       digitalWrite(error, LOW);
@@ -82,6 +88,7 @@ void loop()
       }
       else if (state == "1") {
       digitalWrite(redLED, LOW);
+      digitalWrite(bazzer, LOW);
       digitalWrite(greenLED, HIGH);
       digitalWrite(wifiConnetct, HIGH);
       digitalWrite(error, LOW);
@@ -89,6 +96,7 @@ void loop()
       return;
       }
       else {
+      digitalWrite(bazzer, LOW);
       digitalWrite(redLED, LOW);
       digitalWrite(greenLED, LOW);
       digitalWrite(wifiConnetct, HIGH);
